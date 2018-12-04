@@ -1,6 +1,6 @@
 # Haskell Lab
 
--- Directions --
+** Directions **
 The purpose of this assignment is to understand the concepts of
 functional programming and have a taste of it in Haskell.
 

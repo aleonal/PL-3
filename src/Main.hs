@@ -1,5 +1,5 @@
-import Data.List
-import System.IO
-
 module Main where
+  import Data.List
+  import System.IO
+  
   playerToChar :: Int -> Char

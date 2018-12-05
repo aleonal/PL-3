@@ -32,9 +32,7 @@ dropInCol (x : xs) p = if last (x : xs) == 0 then
 
 -- function that checks for an open slot in n-th column of the given board
 isSlotOpen :: [[Int]] -> Int -> Bool
-isSlotOpen [] n = False
-isSlotOpen (x : xs) 1 = isColOpen x
-isSlotOpen (x : xs) n = isSlotOpen xs (n - 1)
+isSlotOpen (x : xs) i = isColOpen ((x : xs) !! (i - 1))
 
 -- function that returns the number of columns in the given board
 numSlot :: [[Int]] -> Int
@@ -49,8 +47,8 @@ isFull (x : xs) =  not (isColOpen x) && isFull xs
 -- function that drops a player p's disc in a slot.
 dropInSlot :: [[Int]] -> Int -> Int -> [[Int]]
 dropInSlot [] i p = []
-dropInSlot (x : xs) i p = if isColOpen ((x : xs) !! i) then
-  reverse (dropInCol ((x : xs) !! i) p : reverse (take (i - 1) (x : xs))) ++
-  drop i (x : xs) else (x : xs)
+dropInSlot (x : xs) i p = if isSlotOpen (x : xs) i then
+  reverse(dropInCol ((x : xs) !! (i - 1)) p : reverse (take (i - 1) (x : xs)))
+   ++ drop i (x : xs) else ([] : xs)
 
--- ---------- DETERMINING THE OUTCOMEC ----------
+-- ---------- DETERMINING THE OUTCOME ----------
